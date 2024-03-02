@@ -1,6 +1,9 @@
-FROM node:20.11.1
+FROM alpine:latest
 
-WORKDIR /template-project
+# install Node.js & npm
+RUN apk add --no-cache --update nodejs npm
+
+WORKDIR /usr/template-project
 
 COPY . .
 
