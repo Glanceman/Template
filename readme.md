@@ -13,6 +13,7 @@ OS: Ubuntu
 4. Add agent node `curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="agent --server https://k3s.example.com --token mypassword" sh -s -  --docker`
 
 Server : ``` cat /var/lib/rancher/k3s/server/token```
+
 Agent : ``` cat /var/lib/rancher/k3s/server/agent-token```
 
 ---
