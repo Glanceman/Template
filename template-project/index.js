@@ -28,6 +28,29 @@ app.use(function (req, res, next) {
 
 app.use('/', express.static(__dirname + '/dist'))
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+app.get('/fibonacci', (req, res) => {
+  const startTime = Date.now();
+  const n = Math.max(getRandomInt(35),10); // Get the value from the query parameter
+  const fibonacciNumber = fib(n);
+  const endTime = Date.now();
+
+  const executionTimeInSeconds = (endTime - startTime)/1000 // Convert milliseconds
+
+  res.json({ n,fibonacciNumber, executionTimeInSeconds });
+});
+
+// Recursive function to calculate Fibonacci number
+function fib(n) {
+  if (n < 2) {
+      return n;
+  }
+  return fib(n - 1) + fib(n - 2);
+}
+
 app.listen(PORT, function () {
     console.log(`listening on http://localhost:${PORT}`)
 })
